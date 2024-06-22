@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+  %}
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+      <title>SmartECO</title>
+  </head>
+  <body>
+      <header>
+          <h1>SmartECO</h1>
+          <p>We are your one step solution for all your waste management needs</p>
+          <nav>
+              <a href="/login">Login</a>
+              <a href="/register"> Register </a>
+              <a href="/dashboard">Dashboard</a>
+          </nav>
+  
+      </header>
+  
+      <div>
+          <img src="{{url_for('static', filename='background.avif')}}" alt="background">
+      </div>
+      
+      <main>
+          <h2>Welcome to the SmartECO</h2>
+          <p>Manage your waste collection schedules, track recycling efforts, and view environmental impact metrics.</p>
+      </main>
+  
+      <footer>
+          <p>&copy; 2024 SmartECO. All rights reserved.</p>
+      </footer>
+  
+      <script src="{{url_for('static', filename='main.js')}}"></script>
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %} {% if category ==
+          'error' %}
+          <div class="alert alert-danger alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% else %}
+          <div class="alert alert-success alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endif %} {% endfor %} {% endif %} {% endwith %}
+      
+          <div class="container">{% block content %} {% endblock %}</div>
+    {% endif %}
+  {% endwith %}
+  
+  
+  </body>
+  </html>
+  
+  
+  {% endblock %} 
+{% block background_video %}{% endblock %}
